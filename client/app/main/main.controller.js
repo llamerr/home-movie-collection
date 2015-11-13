@@ -1,7 +1,7 @@
 'use strict';
 
 angular.module('homeMovieCollectionApp')
-  .controller('MainCtrl', function ($scope, $http, socket) {
+  .controller('MainCtrl', function ($scope, $http, socket, Modal) {
     $scope.awesomeThings = [];
 
     $http.get('/api/things').success(function(awesomeThings) {
@@ -17,9 +17,9 @@ angular.module('homeMovieCollectionApp')
       $scope.newThing = '';
     };
 
-    $scope.deleteThing = function(thing) {
+    $scope.deleteThing = Modal.confirm.delete(function(thing) {
       $http.delete('/api/things/' + thing._id);
-    };
+    });
 
     $scope.$on('$destroy', function () {
       socket.unsyncUpdates('thing');

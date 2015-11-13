@@ -15,7 +15,7 @@ header#banner.hero-unit
           li
             a(href='#', tooltip='{{thing.info}}')
               | {{thing.name}}
-              button.close(type='button', ng-click='deleteThing(thing)') ×
+              button.close(type='button', ng-click='deleteThing(thing.name, thing)') ×
 
   form.thing-form
     label Syncs in realtime across clients
