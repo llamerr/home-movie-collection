@@ -1,0 +1,10 @@
+header#banner.hero-unit
+  .container
+    .row
+      .col-sm-6.center-block
+        form.thing-form
+        label Add new movie
+        p.input-group
+          input.form-control(type='text', placeholder='Movie title', ng-model='Movie')
+          span.input-group-btn
+            button.btn.btn-primary(type='submit', ng-click='addThing()') Add New

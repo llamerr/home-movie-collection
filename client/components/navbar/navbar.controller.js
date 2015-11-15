@@ -5,6 +5,9 @@ angular.module('homeMovieCollectionApp')
     $scope.menu = [{
       'title': 'Home',
       'link': '/'
+    },{
+      'title': 'Movies',
+      'link': '/movies'
     }];
 
     $scope.isCollapsed = true;

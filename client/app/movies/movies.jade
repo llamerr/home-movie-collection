@@ -1,0 +1,22 @@
+div(ng-include='"components/navbar/navbar.html"')
+div(ng-include='"app/movies/movies-add.html"')
+
+.container
+  .row
+    .col-lg-12
+      .row
+        ul.nav.nav-tabs.nav-stacked.col-sm-6.col-md-4(ng-repeat='movie in movies')
+          li
+            .row
+              .col-sm-6.col-md-4
+                .thumbnail
+                  img(src='assets/images/{{movie.cover}}', alt='{{movie.title}}')
+                  .caption
+                    h3 {{movie.title}}
+                    p {{movie.description}}
+                    p
+                      a.btn.btn-primary(href='#', role='button') Edit
+                      a.btn.btn-default(href='#', role='button', ng-click='deleteThing(movie.title, movie)')) Delete
+        label(ng-hide='movies.length') No items found
+
+div(ng-include='"components/footer/footer.html"')
