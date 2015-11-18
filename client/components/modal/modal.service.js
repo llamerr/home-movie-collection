@@ -54,6 +54,7 @@ angular.module('homeMovieCollectionApp')
                 buttons: [{
                   classes: 'btn-danger',
                   text: 'Delete',
+                  ngEnter: true,
                   click: function(e) {
                     deleteModal.close(e);
                   }
