@@ -1,0 +1,17 @@
+header#banner.hero-unit(ng-if="vm.editedMovie")
+  .container
+    .row
+      .col-sm-6.center-block
+        form.thing-form
+          label Edit movie
+          p.input-group
+            input.form-control(
+              type='text',
+              placeholder='Movie title',
+              ng-model="vm.editedMovie.title",
+              ng-disabled="saving",
+              xng-focus='vm.editedMovie'
+            )
+            span.input-group-btn
+              button.btn.btn-primary(type='submit', ng-click='vm.saveEdits(vm.editedMovie)') Save
+              button.btn.btn-primary(type='submit', ng-click='vm.revertEdits(vm.editedMovie)') Cancel

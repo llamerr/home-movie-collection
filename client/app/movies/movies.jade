@@ -1,22 +1,26 @@
 div(ng-include='"components/navbar/navbar.html"')
 div(ng-include='"app/movies/movies-add.html"')
+div(ng-include='"app/movies/movies-edit.html"')
 
 .container
+  ng-overlay(ng-if="vm.editedMovie")
   .row
     .col-lg-12
       .row
-        ul.nav.nav-tabs.nav-stacked.col-sm-6.col-md-4(ng-repeat='movie in movies')
+        ul.nav.nav-tabs.nav-stacked.col-sm-6.col-md-4(ng-repeat='movie in vm.movies')
           li
-            .row
-              .col-sm-6.col-md-4
-                .thumbnail
-                  img(src='assets/images/{{movie.cover}}', alt='{{movie.title}}')
-                  .caption
-                    h3 {{movie.title}}
-                    p {{movie.description}}
-                    p
-                      a.btn.btn-primary(href='#', role='button') Edit
-                      a.btn.btn-default(href='#', role='button', ng-click='deleteThing(movie.title, movie)')) Delete
-        label(ng-hide='movies.length') No items found
+            .thumbnail
+              img(ng-src='{{movie.cover ? movie.cover : "/assets/images/no-cover.png"}}', alt='{{movie.title}}', title='{{movie.title}}')
+              .caption
+                h3 {{movie.title}}
+                p {{movie.description}}
+                p
+                  a.btn.btn-primary(href='#', role='button', ng-click='vm.editMovie(movie);')
+                    span.glyphicon.glyphicon-edit
+                    span &nbsp; Edit
+                  a.btn.btn-danger.pull-right(href='#', role='button', ng-click='vm.removeMovie(movie.title, movie)')
+                    span.glyphicon.glyphicon-trash
+                    span &nbsp; Delete
+        label(ng-hide='vm.movies | isEmpty') No items found
 
 div(ng-include='"components/footer/footer.html"')

@@ -1,10 +1,16 @@
-header#banner.hero-unit
+header#banner.hero-unit(ng-if="!vm.editedMovie")
   .container
     .row
       .col-sm-6.center-block
         form.thing-form
-        label Add new movie
-        p.input-group
-          input.form-control(type='text', placeholder='Movie title', ng-model='Movie')
-          span.input-group-btn
-            button.btn.btn-primary(type='submit', ng-click='addThing()') Add New
+          label Add new movie
+          p.input-group
+            input.form-control(
+              type='text',
+              placeholder='Movie title',
+              ng-model="vm.newMovie",
+              ng-disabled="saving",
+              xng-focus='!vm.editedMovie'
+            )
+            span.input-group-btn
+              button.btn.btn-primary(type='submit', ng-click='vm.createMovie(vm.newMovie)') Add New
