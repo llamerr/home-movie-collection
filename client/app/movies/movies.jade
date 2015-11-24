@@ -7,15 +7,19 @@ div(ng-include='"app/movies/movies-edit.html"')
   .row
     .col-lg-12
       .row
-        ul.nav.nav-tabs.nav-stacked.col-sm-6.col-md-4(ng-repeat='movie in vm.movies')
+        ul.nav.nav-tabs.nav-stacked.col-sm-6.col-md-4(ng-repeat="movie in vm.movies track by movie.id")
           li
             .thumbnail
-              img(ng-src='{{movie.cover ? movie.cover : "/assets/images/no-cover.png"}}', alt='{{movie.title}}', title='{{movie.title}}')
+              img(
+                ng-src="{{movie.cover ? movie.cover : '/assets/images/no-cover.png'}}",
+                alt="{{movie.title}}",
+                title="{{movie.title}}"
+              )
               .caption
                 h3 {{movie.title}}
                 p {{movie.description}}
                 p
-                  a.btn.btn-primary(href='#', role='button', ng-click='vm.editMovie(movie);')
+                  a.btn.btn-primary(href='#', role='button', ng-click="vm.editMovie(movie);")
                     span.glyphicon.glyphicon-edit
                     span &nbsp; Edit
                   a.btn.btn-danger.pull-right(href='#', role='button', ng-click='vm.removeMovie(movie.title, movie)')

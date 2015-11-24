@@ -8,9 +8,9 @@ header#banner.hero-unit(ng-if="!vm.editedMovie")
             input.form-control(
               type='text',
               placeholder='Movie title',
-              ng-model="vm.newMovie",
+              ng-model="vm.newMovieTitle",
               ng-disabled="saving",
               xng-focus='!vm.editedMovie'
             )
             span.input-group-btn
-              button.btn.btn-primary(type='submit', ng-click='vm.createMovie(vm.newMovie)') Add New
+              button.btn.btn-primary(type='submit', ng-click='vm.editMovie({title: vm.newMovieTitle})') Add New

@@ -7,7 +7,8 @@ angular.module('homeMovieCollectionApp', [
   'btford.socket-io',
   'ui.router',
   'ui.bootstrap',
-  'uuid'
+  'uuid',
+  'js-data'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider
