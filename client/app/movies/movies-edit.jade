@@ -15,3 +15,15 @@ header#banner.hero-unit(ng-if="vm.editedMovie")
             span.input-group-btn
               button.btn.btn-primary(type='submit', ng-click='vm.saveEdits(vm.editedMovie)') Save
               button.btn.btn-primary(type='submit', ng-click='vm.revertEdits(vm.editedMovie)') Cancel
+          label Actors
+          p.input-group
+            label(ng-repeat="actor in vm.actors track by actor.id")
+              input(type="checkbox", checklist-model="vm.editedMovieActors", checklist-value="actor")
+            div(ng-repeat="actor in vm.actors track by actor.id")
+              input.pull-left(
+                id='{{actor.id}}',
+                type='checkbox',
+                ng-model='vm.editedMovieActors',
+                ng-change='vm.changeActor(vm.editedMovie, actor)'
+              )
+              label(for='{{actor.id}}') {{actor.title}}

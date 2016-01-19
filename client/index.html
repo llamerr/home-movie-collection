@@ -60,6 +60,7 @@
       <script src="bower_components/js-data-localstorage/dist/js-data-localstorage.js"></script>
       <script src="bower_components/js-data-http/dist/js-data-http.js"></script>
       <script src="bower_components/js-data-angular/dist/js-data-angular.js"></script>
+      <script src="bower_components/checklist-model/checklist-model.js"></script>
       <!-- endbower -->
       <script src="socket.io-client/socket.io.js"></script>
     <!-- endbuild -->
@@ -73,6 +74,8 @@
           <script src="app/account/login/login.controller.js"></script>
           <script src="app/account/settings/settings.controller.js"></script>
           <script src="app/account/signup/signup.controller.js"></script>
+          <script src="app/actors/actors.controller.js"></script>
+          <script src="app/actors/actors.js"></script>
           <script src="app/admin/admin.controller.js"></script>
           <script src="app/admin/admin.js"></script>
           <script src="app/main/main.controller.js"></script>
@@ -81,9 +84,14 @@
           <script src="app/movies/movies.js"></script>
           <script src="components/auth/auth.service.js"></script>
           <script src="components/auth/user.service.js"></script>
+          <script src="components/isEmpty/isEmpty.service.js"></script>
           <script src="components/modal/modal.service.js"></script>
+          <script src="components/models/actor.service.js"></script>
+          <script src="components/models/genre.service.js"></script>
+          <script src="components/models/movie.service.js"></script>
+          <script src="components/models/service/actor_movie.service.js"></script>
+          <script src="components/models/service/movie_genre.service.js"></script>
           <script src="components/mongoose-error/mongoose-error.directive.js"></script>
-          <script src="components/movie/movie.service.js"></script>
           <script src="components/navbar/navbar.controller.js"></script>
           <script src="components/ngEnter/ngEnter.directive.js"></script>
           <script src="components/ngOverlay/ngOverlay.directive.js"></script>

@@ -8,7 +8,8 @@ angular.module('homeMovieCollectionApp', [
   'ui.router',
   'ui.bootstrap',
   'uuid',
-  'js-data'
+  'js-data',
+  'checklist-model'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $locationProvider, $httpProvider) {
     $urlRouterProvider

@@ -8,6 +8,9 @@ angular.module('homeMovieCollectionApp')
     },{
       'title': 'Movies',
       'link': '/movies'
+    },{
+      'title': 'Actors',
+      'link': '/actors'
     }];
 
     $scope.isCollapsed = true;

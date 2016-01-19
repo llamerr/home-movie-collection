@@ -1,17 +1,36 @@
 'use strict';
 
 angular.module('homeMovieCollectionApp')
-  .controller('MoviesCtrl', function (Modal, Movie, $scope) {
+  .controller('MoviesCtrl', function (Modal, Movie, Actor, ActorMovie, $scope, $window) {
 
     var vm = this;
 
+    $window.Actor = Actor;
+    $window.Movie = Movie;
+    $window.ActorMovie = ActorMovie;
+
     Movie.findAll().then(function (movies) {
-      vm.movies = movies;
+      vm.movies = $window.movies = movies;
+      console.log(movies)
     });
     Movie.bindAll({}, $scope, 'vm.movies');
 
+    Actor.findAll().then(function (actors) {
+      console.log(actors)
+      vm.actors = $window.actors = actors;
+    });
+
     vm.newMovieTitle = '';
     vm.editedMovie = null;
+    vm.editedMovieActors = [];
+
+    vm.changeActor = function (movie, actor) {
+      console.log(movie, actor);
+      ActorMovie.create({
+        movie_id: movie.id,
+        actor_id: actor.id
+      })
+    };
 
     vm.editMovie = function (movie) {
       vm.newMovieTitle = '';
@@ -48,10 +67,4 @@ angular.module('homeMovieCollectionApp')
       Movie.destroy(movie);
     });
 
-  })
-  .filter('isEmpty', function () {
-    return function (obj) {
-      if (angular.equals(obj, {})) return false;
-      else return true;
-    };
   });

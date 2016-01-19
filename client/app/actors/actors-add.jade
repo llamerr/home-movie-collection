@@ -1,0 +1,16 @@
+header#banner.hero-unit(ng-if="!vm.editedActor")
+  .container
+    .row
+      .col-sm-6.center-block
+        form.thing-form
+          label Add new actor
+          p.input-group
+            input.form-control(
+              type='text',
+              placeholder='Actor title',
+              ng-model="vm.newActorTitle",
+              ng-disabled="saving",
+              xng-focus='!vm.editedActor'
+            )
+            span.input-group-btn
+              button.btn.btn-primary(type='submit', ng-click='vm.editActor({title: vm.newActorTitle})') Add New
