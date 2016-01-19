@@ -1,0 +1,28 @@
+div(ng-include='"components/navbar/navbar.html"')
+div(ng-include='"app/actors/actors-add.html"')
+div(ng-include='"app/actors/actors-edit.html"')
+.container
+  ng-overlay(ng-if="vm.editedActor")
+  .row
+    .col-lg-12
+      .row
+        ul.nav.nav-tabs.nav-stacked.col-sm-6.col-md-4(ng-repeat="actor in vm.actors track by actor.id")
+          li
+            .thumbnail
+              img(
+              ng-src="{{actor.cover ? actor.cover : '/assets/images/no-cover.png'}}",
+              alt="{{actor.title}}",
+              title="{{actor.title}}"
+              )
+              .caption
+                h3 {{actor.title}}
+                p {{actor.description}}
+                p
+                  a.btn.btn-primary(href='#', role='button', ng-click="vm.editActor(actor);")
+                    span.glyphicon.glyphicon-edit
+                    span &nbsp; Edit
+                  a.btn.btn-danger.pull-right(href='#', role='button', ng-click='vm.removeActor(actor.title, actor)')
+                    span.glyphicon.glyphicon-trash
+                    span &nbsp; Delete
+        label(ng-hide='vm.actors | isEmpty') No items found
+div(ng-include='"components/footer/footer.html"')
